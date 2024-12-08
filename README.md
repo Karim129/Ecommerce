@@ -17,7 +17,6 @@ This project is a Laravel-based e-commerce platform designed to provide a seamle
 - **Framework:** Laravel (PHP)
 - **Frontend:** Blade Templating Engine
 - **Database:** MySQL
-- **Environment:** Docker, Ubuntu
 - **Version Control:** Git
 
 ## Installation
