@@ -49,9 +49,9 @@ jobs:
           exit 1
         fi
 
-    # Install dependencies
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    # Update dependencies
+    - name: Update Dependencies
+      run: composer update -q --no-ansi --no-interaction --no-progress --prefer-dist
 
     # Generate application key
     - name: Generate key
