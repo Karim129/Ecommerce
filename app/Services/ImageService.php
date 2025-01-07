@@ -4,7 +4,6 @@ namespace App\Services;
 
 class ImageService
 {
-
     public static function upload($image, $folder): string
     {
 
@@ -13,7 +12,7 @@ class ImageService
         }
 
         // Generate a unique filename based on the current time and a random string.
-        $imagePath = time() . uniqid() . '.' . $image->extension(); // Determine the file's extension based on the file's MIME type...
+        $imagePath = time().uniqid().'.'.$image->extension(); // Determine the file's extension based on the file's MIME type...
 
         // The full path to the target directory.
         $path = public_path("storage/$folder");
@@ -28,12 +27,15 @@ class ImageService
         // Return the path to the uploaded file.
         return env('APP_URL')."/storage/$folder/$imagePath";
     }
-    public static function delete($image)
+
+    public static function delete($image): bool
     {
         if (file_exists($image)) {
             unlink(public_path($image));
+
             return true;
         }
+
         return false;
     }
 }

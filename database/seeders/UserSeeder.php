@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
                 'email' => 'karim@gmail.com',
                 'password' => Hash::make('password'),
                 'is_admin' => 1,
-            ]);        } catch (\Exception $e) {
+            ]);
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
 

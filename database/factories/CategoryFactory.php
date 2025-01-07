@@ -24,6 +24,7 @@ class CategoryFactory extends Factory
     {
         $name = $this->faker->word();
         $slug = Str::slug($name);
+
         return [
             'name' => $name,
             'slug' => $slug,

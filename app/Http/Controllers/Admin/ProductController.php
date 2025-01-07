@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
-use App\Models\Category;
-use App\Services\ImageService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\storeProductRequest;
 use App\Http\Requests\upateProductRequest;
+use App\Models\Category;
+use App\Models\Product;
+use App\Services\ImageService;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -44,7 +44,7 @@ class ProductController extends Controller
             $validate = $request->validated();
 
             // $image = $request->file('image')->store('public/assets/uploads/Product');
-            $image =ImageService::upload($request->file('image'), 'products');
+            $image = ImageService::upload($request->file('image'), 'products');
 
             $product = new Product;
             $product->category_id = $request->category_id;

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use App\Services\ImageService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\storeCategoryRequest;
 use App\Http\Requests\updateCategoryRequest;
+use App\Models\Category;
+use App\Services\ImageService;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -99,7 +99,8 @@ class CategoryController extends Controller
             $image = $category->image;
 
             if ($request->hasFile('image')) {
-ImageService::delete($category->image);                $image = ImageService::upload($request->file('image'), 'categories');
+                ImageService::delete($category->image);
+                $image = ImageService::upload($request->file('image'), 'categories');
             }
 
             $category->update([
@@ -129,7 +130,7 @@ ImageService::delete($category->image);                $image = ImageService::up
      */
     public function destroy(Category $category)
     {
-        ImageService::delete($category->image); 
+        ImageService::delete($category->image);
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', trans('messages_trans.success_delete'));
