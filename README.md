@@ -53,6 +53,9 @@ This project is a Laravel-based e-commerce platform designed to provide a seamle
    php artisan serve
    ```
 
+8. Admin Login Credentials:  
+   - **Username:** karim@gmail.com
+   - **Password:** password
 ## Usage
 
 1. Access the application at `http://localhost:8000`.
