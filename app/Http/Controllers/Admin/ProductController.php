@@ -7,7 +7,6 @@ use App\Http\Requests\storeProductRequest;
 use App\Http\Requests\upateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -19,6 +18,7 @@ class ProductController extends Controller
     {
         $data['route'] = 'products';
         $data['products'] = Product::select('id', 'category_id', 'name', 'image', 'status', 'trend')->get();
+
         return view('admin.product.index', $data);
     }
 
@@ -29,6 +29,7 @@ class ProductController extends Controller
     {
         $data['route'] = 'products';
         $data['categories'] = Category::select('id', 'name')->get();
+
         return view('admin.product.create', $data);
     }
 
@@ -43,8 +44,7 @@ class ProductController extends Controller
 
             $image = $request->file('image')->store('public/assets/uploads/Product');
 
-
-            $product = new Product();
+            $product = new Product;
             $product->category_id = $request->category_id;
             $product->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $product->slug = $request->slug;
@@ -76,6 +76,7 @@ class ProductController extends Controller
     {
         $data['route'] = 'products';
         $data['product'] = $product;
+
         return view('admin.product.show', $data);
     }
 
@@ -87,6 +88,7 @@ class ProductController extends Controller
         $data['route'] = 'products';
         $data['product'] = $product;
         $data['categories'] = Category::select('id', 'name')->get();
+
         return view('admin.product.edit', $data);
     }
 
@@ -123,7 +125,6 @@ class ProductController extends Controller
 
             return redirect()->route('products.index')->with('success', trans('messages_trans.success_update'));
 
-
         } catch (\Exception $e) {
             return redirect()->back()->with(['error_catch' => $e->getMessage()]);
         }
@@ -136,6 +137,7 @@ class ProductController extends Controller
     {
         Storage::delete($product->image);
         $product->delete();
+
         return redirect()->route('products.index')->with('success', trans('messages_trans.success_delete'));
 
     }

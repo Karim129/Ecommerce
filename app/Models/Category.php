@@ -22,11 +22,12 @@ class Category extends Model
         'meta_keywords',
 
     ];
+
     public $translatable = [
         'name',
         'description',
         'meta_title',
-        'meta_description'
+        'meta_description',
     ];
 
     public function products()

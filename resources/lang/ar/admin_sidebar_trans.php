@@ -2,7 +2,7 @@
 
 return [
 
-    'Dashboard'=> 'لوحة التحكم',
-    'Category'=> 'التصنيفات',
-    'Product'=> 'المنتجات',
+    'Dashboard' => 'لوحة التحكم',
+    'Category' => 'التصنيفات',
+    'Product' => 'المنتجات',
 ];

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\storeCategoryRequest;
 use App\Http\Requests\updateCategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -41,10 +40,9 @@ class CategoryController extends Controller
         try {
             $validate = $request->validated();
 
-
             $image = $request->file('image')->store('public/assets/uploads/Category');
 
-            $category = new Category();
+            $category = new Category;
             $category->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $category->slug = $request->slug;
             $category->description = ['ar' => $request->description_ar, 'en' => $request->description_en];
@@ -56,9 +54,7 @@ class CategoryController extends Controller
             $category->image = $image;
             $category->save();
 
-
-
-            toastr()->success(trans("messages_trans.success_save"), 'Congrats', ['timeOut' => 5000]);
+            toastr()->success(trans('messages_trans.success_save'), 'Congrats', ['timeOut' => 5000]);
 
             return redirect()->route('categories.index');
 
@@ -74,6 +70,7 @@ class CategoryController extends Controller
     {
         $data['route'] = 'categories';
         $data['category'] = $category;
+
         return view('admin.category.show', $data);
     }
 
@@ -84,6 +81,7 @@ class CategoryController extends Controller
     {
         $data['route'] = 'categories';
         $data['category'] = $category;
+
         return view('admin.category.edit', $data);
     }
 
@@ -116,7 +114,8 @@ class CategoryController extends Controller
                 'image' => $image,
 
             ]);
-            return redirect()->route('categories.index')->with('success', trans("messages_trans.success_update"));
+
+            return redirect()->route('categories.index')->with('success', trans('messages_trans.success_update'));
 
         } catch (\Exception $e) {
             return redirect()->withErrors('error', $e->getMessage());
@@ -132,6 +131,7 @@ class CategoryController extends Controller
     {
         Storage::delete($category->image);
         $category->delete();
-        return redirect()->route('categories.index')->with('success', trans("messages_trans.success_delete"));
+
+        return redirect()->route('categories.index')->with('success', trans('messages_trans.success_delete'));
     }
 }

@@ -13,6 +13,7 @@ class AddToCartController extends Controller
     {
         $data['route'] = 'cart_page';
         $data['cart_products'] = Cart::where('user_id', Auth::id())->get();
+
         return view('website.cart.index', $data);
     }
 
@@ -25,37 +26,35 @@ class AddToCartController extends Controller
         if (Auth::check()) {
 
             $product = Product::where('id', $product_id)->exists();
-            if ($product) {
+            if (! $product) {
 
-                if (Cart::where('product_id', $product_id)->where('user_id', $user_id)->exists()) {
-                    return response()->json(['msg' => 'product in your cart already']);
-
-
-                } else {
-                    Cart::create([
-                        'user_id' => $user_id,
-                        'product_id' => $product_id,
-                        'qty' => $qty
-                    ]);
-
-                    $product_name = Product::findOrFail($product_id);
-                    return response()->json(['msg' => $product_name->name . " successfully added to your cart"]);
-                }
-
-            } else {
                 return response()->json(['msg' => 'product not found']);
-            }
 
-        } else {
-            return response()->json(['msg' => 'login first']);
+            }
+            if (Cart::where('product_id', $product_id)->where('user_id', $user_id)->exists()) {
+                return response()->json(['msg' => 'product in your cart already']);
+
+            }
+            Cart::create([
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+                'qty' => $qty,
+            ]);
+            $product_name = Product::findOrFail($product_id);
+
+            return response()->json(['msg' => $product_name->name.' successfully added to your cart']);
+
         }
+
+        return response()->json(['msg' => 'login first']);
     }
 
     public function destroy($id)
     {
         $cart = Cart::where(['id' => $id, 'user_id' => Auth::id()])->first();
         $cart->delete();
-        return redirect()->back()->with('success', trans("messages_trans.success_delete"));
+
+        return redirect()->back()->with('success', trans('messages_trans.success_delete'));
     }
 
     public function update(Request $request)
@@ -64,12 +63,14 @@ class AddToCartController extends Controller
             if (Cart::where('id', $request->id)->exists()) {
                 $cart = Cart::where('id', $request->id)->first();
                 $cart->update([
-                    'qty' => $request->qty
+                    'qty' => $request->qty,
                 ]);
 
             }
+
             return response()->json(['msg' => 'cart updated']);
         }
-    }
 
+        return null;
+    }
 }

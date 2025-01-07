@@ -1,15 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\websiteController;
-
-use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\websiteController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -23,24 +21,21 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-
 // /** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
 Auth::routes();
-
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
-    function () {
+    function (): void {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
         Route::group([
             'middleware' => ['is_admin', 'auth'],
             'prefix' => 'admin',
-        ], function () {
+        ], function (): void {
 
             Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
@@ -48,7 +43,6 @@ Route::group(
             Route::resource('/products', ProductController::class);
 
         });
-
 
         // Route::get('/', function () {
         //     return view('welcome');
@@ -60,14 +54,13 @@ Route::group(
         Route::post('/product/add_to_cart', [AddToCartController::class, 'addToCart'])->name('product.addToCart');
 
         Route::group([
-            'middleware' => ['auth']
-        ], function () {
+            'middleware' => ['auth'],
+        ], function (): void {
             Route::get('cart', [AddToCartController::class, 'index'])->name('cart.index');
             Route::delete('cart/destroy/{id}', [AddToCartController::class, 'destroy'])->name('cart.destroy');
             Route::post('cart/update', [AddToCartController::class, 'update'])->name('cart.update');
             Route::get('checkout/', [CheckOutController::class, 'index'])->name('checkout.index');
         });
-
 
     }
 

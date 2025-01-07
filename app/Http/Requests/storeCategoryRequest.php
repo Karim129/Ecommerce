@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class storeCategoryRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -25,7 +24,7 @@ class storeCategoryRequest extends FormRequest
             'meta_title_en' => 'required',
             'meta_description_ar' => 'required',
             'meta_description_en' => 'required',
-            'meta_keywords' => 'required'
+            'meta_keywords' => 'required',
         ];
     }
 }

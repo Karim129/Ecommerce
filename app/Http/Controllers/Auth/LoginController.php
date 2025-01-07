@@ -37,12 +37,11 @@ class LoginController extends Controller
 
             return redirect()->route('dashboard')->with($data);
 
-
-
-        } else {
-            return redirect('/')->with('success', 'login Successfully');
         }
+
+        return redirect('/')->with('success', 'login Successfully');
     }
+
     /**
      * Create a new controller instance.
      *

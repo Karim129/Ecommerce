@@ -20,9 +20,8 @@ class IsAdminMiddleware
             if (Auth::user()->is_admin == 1) {
                 return $next($request);
 
-            } else {
-                abort(404);
             }
+            abort(404);
 
         } else {
 

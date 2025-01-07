@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
+    protected $guarded = [];
 
     public function Product()
     {
         return $this->belongsTo(Product::class);
     }
-
 }

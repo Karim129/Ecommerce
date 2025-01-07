@@ -32,5 +32,4 @@ return [
     'place_order' => 'Place Order',
     'out_of_stock' => 'Out Of Stock',
 
-
 ];

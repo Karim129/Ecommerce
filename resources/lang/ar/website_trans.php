@@ -30,6 +30,6 @@ return [
     'pincode' => 'الرمز البريدي',
     'order_details' => 'تفاصيل الطلب',
     'place_order' => 'تقديم طلب',
-    'out_of_stock'=>'غير متوفر في المخزن',
+    'out_of_stock' => 'غير متوفر في المخزن',
 
 ];

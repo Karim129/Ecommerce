@@ -2,7 +2,7 @@
 
 return [
 
-    'Dashboard'=> 'Dashboard',
-    'Category'=> 'category',
-    'Product'=> 'Product',
+    'Dashboard' => 'Dashboard',
+    'Category' => 'category',
+    'Product' => 'Product',
 ];

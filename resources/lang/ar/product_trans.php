@@ -24,11 +24,9 @@ return [
     'meta_keyword' => 'كلمات مفتاحية',
     'meta_keyword_note' => 'ضع فاصلة بين الكلمات المفتاحية',
 
-
     'showing' => 'ظاهر',
     'hidden' => 'مخفي',
     'trending' => 'رائج',
     'not_trending' => 'غير رائج',
-
 
 ];
