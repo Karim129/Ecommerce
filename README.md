@@ -45,10 +45,11 @@ This project is a Laravel-based e-commerce platform designed to provide a seamle
    ```
 6. Run migrations:  
    ```bash
-   php artisan migrate
+   php artisan migrate --seed
    ```
 7. Start the development server:  
    ```bash
+   npm run dev
    php artisan serve
    ```
 
