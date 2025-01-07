@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Product;
+use App\Models\Category;
+use App\Services\ImageService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\storeProductRequest;
 use App\Http\Requests\upateProductRequest;
-use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -42,7 +43,8 @@ class ProductController extends Controller
 
             $validate = $request->validated();
 
-            $image = $request->file('image')->store('public/assets/uploads/Product');
+            // $image = $request->file('image')->store('public/assets/uploads/Product');
+            $image =ImageService::upload($request->file('image'), 'products');
 
             $product = new Product;
             $product->category_id = $request->category_id;
@@ -101,8 +103,11 @@ class ProductController extends Controller
             $image = $product->image;
 
             if ($request->hasFile('image')) {
-                Storage::delete($product->image);
-                $image = $request->file('image')->store('public/assets/uploads/Product');
+                // Storage::delete($product->image);
+                // $image = $request->file('image')->store('public/assets/uploads/Product');
+                ImageService::delete($product->image);
+                $image = ImageService::upload($request->file('image'), 'products');
+
             }
 
             $product->update([
@@ -135,7 +140,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        Storage::delete($product->image);
+        // Storage::delete($product->image);
+        // $product->delete();
+        ImageService::delete($product->image);
         $product->delete();
 
         return redirect()->route('products.index')->with('success', trans('messages_trans.success_delete'));

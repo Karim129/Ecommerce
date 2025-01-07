@@ -38,7 +38,7 @@
                 <td>{{$i++}}</td>
                 <td>{{$product->name}}</td>
                 <td>{{$product->category->name}}</td>
-                <td><img src="{{Storage::url($product->image)}}" alt="" class="rounded mx-auto d-block"
+                <td><img src="{{asset($product->image)}}" alt="" class="rounded mx-auto d-block"
                         style="max-width:200px;"></td>
                 <td>
                     @if($product->status == 1)

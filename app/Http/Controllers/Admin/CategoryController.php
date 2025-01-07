@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
+use App\Services\ImageService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\storeCategoryRequest;
 use App\Http\Requests\updateCategoryRequest;
-use App\Models\Category;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -40,7 +41,7 @@ class CategoryController extends Controller
         try {
             $validate = $request->validated();
 
-            $image = $request->file('image')->store('public/assets/uploads/Category');
+            $image = ImageService::upload($request->file('image'), 'categories');
 
             $category = new Category;
             $category->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
@@ -98,8 +99,7 @@ class CategoryController extends Controller
             $image = $category->image;
 
             if ($request->hasFile('image')) {
-                Storage::delete($image);
-                $image = $request->file('image')->store('public/assets/uploads/Category');
+ImageService::delete($category->image);                $image = ImageService::upload($request->file('image'), 'categories');
             }
 
             $category->update([
@@ -129,7 +129,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Storage::delete($category->image);
+        ImageService::delete($category->image); 
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', trans('messages_trans.success_delete'));
