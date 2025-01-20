@@ -1,100 +1,111 @@
 <?php return  [
-  'laravel/sail' => 
+  'laravel/sail' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Laravel\Sail\SailServiceProvider::class,
     ],
   ],
-  'laravel/sanctum' => 
+  'laravel/sanctum' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Laravel\Sanctum\SanctumServiceProvider::class,
     ],
   ],
-  'laravel/tinker' => 
+  'laravel/tinker' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Laravel\Tinker\TinkerServiceProvider::class,
     ],
   ],
-  'laravel/ui' => 
+  'laravel/ui' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Laravel\Ui\UiServiceProvider::class,
     ],
   ],
-  'mcamara/laravel-localization' => 
+  'mcamara/laravel-localization' =>
    [
-    'aliases' => 
+    'aliases' =>
      [
       'LaravelLocalization' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
     ],
-    'providers' => 
+    'providers' =>
      [
       0 => \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
     ],
   ],
-  'nesbot/carbon' => 
+  'nesbot/carbon' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Carbon\Laravel\ServiceProvider::class,
     ],
   ],
-  'nunomaduro/collision' => 
+  'nunomaduro/collision' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
     ],
   ],
-  'nunomaduro/termwind' => 
+  'nunomaduro/termwind' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Termwind\Laravel\TermwindServiceProvider::class,
     ],
   ],
-  'php-flasher/flasher-laravel' => 
+  'php-flasher/flasher-laravel' =>
    [
-    'aliases' => 
+    'aliases' =>
      [
       'Flasher' => \Flasher\Laravel\Facade\Flasher::class,
     ],
-    'providers' => 
-     [
-      0 => \Flasher\Laravel\FlasherServiceProvider::class,
-    ],
-  ],
-  'spatie/laravel-ignition' => 
+    'providers' =>
+    array (
+      0 => 'Flasher\\Laravel\\FlasherServiceProvider',
+    ),
+  ),
+  
+  'rahulalam31/laravel-abuse-ip' =>
+  array (
+    'providers' =>
+    array (
+      0 => 'RahulAlam31\\LaravelAbuseIp\\AbuseIPServiceProvider',
+    ),
+  ),
+  'spatie/laravel-ignition' =>
    [
-    'aliases' => 
-     [
-      'Flare' => \Spatie\LaravelIgnition\Facades\Flare::class,
-    ],
-    'providers' => 
-     [
-      0 => \Spatie\LaravelIgnition\IgnitionServiceProvider::class,
-    ],
-  ],
-  'spatie/laravel-translatable' => 
+    'aliases' =>
+    array (
+      'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
+  'spatie/laravel-permission' =>
+  array (
+    'providers' =>
+    array (
+      0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'spatie/laravel-translatable' =>
    [
-    'providers' => 
+    'providers' =>
      [
       0 => \Spatie\Translatable\TranslatableServiceProvider::class,
     ],
   ],
-  'yoeunes/toastr' => 
+  'yoeunes/toastr' =>
    [
-    'aliases' => 
+    'aliases' =>
      [
       'Toastr' => \Yoeunes\Toastr\Facades\Toastr::class,
     ],
-    'providers' => 
+    'providers' =>
      [
       0 => \Yoeunes\Toastr\ToastrServiceProvider::class,
     ],

@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light justify-content-between">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -8,9 +8,9 @@
             <a href="index3.html" class="nav-link">Home</a>
             {{-- {{trans('main_sidebar.Home') }} --}}
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
-        </li>
+        </li> --}}
     </ul>
 
     <!-- SEARCH FORM -->
@@ -28,7 +28,7 @@
     <!-- Right navbar links -->
 
     <ul class="navbar-nav mr-auto-navbav">
-        <!-- Messages Dropdown Menu -->
+        {{-- <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
@@ -112,12 +112,8 @@
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                <i class="fas fa-th-large"></i>
-            </a>
-        </li>
+        </li> --}}
+
 
         <div class="btn-group mb-1">
             <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown"

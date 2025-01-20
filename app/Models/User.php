@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles , Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +29,8 @@ class User extends Authenticatable
         'address1',
         'address2',
         'pincode',
+        'image',
+
     ];
 
     /**
@@ -48,5 +51,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+        'created_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    public function getImageAttribute($value)
+    {
+        return asset($value);
+    }
+
+    protected function asDateTime($value)
+    {
+        // Convert to the desired timezone (Africa/Cairo)
+        return parent::asDateTime($value)->timezone('Africa/Cairo');
+    }
 }

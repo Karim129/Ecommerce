@@ -1,7 +1,9 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2023-2024 <a href="http://adminlte.io">Karim.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
+    <div class="justify-content-between">
+        <div class="text-center">
+            <strong>Copyright &copy; {{date('Y')-1}} -{{date('Y')}}</strong>
+        </div>
+
     </div>
+
 </footer>
