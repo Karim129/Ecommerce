@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "204344fbf15e5fe03e037db370214834",
+    "content-hash": "549f1e6f43c6bb3a27e07aaca86d3ff1",
     "packages": [
         {
             "name": "brick/math",
@@ -3285,6 +3285,75 @@
             "time": "2024-12-10T01:58:33+00:00"
         },
         {
+            "name": "rahulalam31/laravel-abuse-ip",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rahulalam31/Laravel-Abuse-IP.git",
+                "reference": "09ace2deb1783a900287dd8cbbd9f5527a799ad1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rahulalam31/Laravel-Abuse-IP/zipball/09ace2deb1783a900287dd8cbbd9f5527a799ad1",
+                "reference": "09ace2deb1783a900287dd8cbbd9f5527a799ad1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0|^7.9",
+                "illuminate/cache": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/config": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/console": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/contracts": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/validation": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.16",
+                "mockery/mockery": "1.7.x-dev",
+                "orchestra/testbench": "^8.18",
+                "phpunit/phpunit": "^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RahulAlam31\\LaravelAbuseIp\\AbuseIPServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RahulAlam31\\LaravelAbuseIp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rahulalam31",
+                    "email": "rahulalam31@users.noreply.github.com"
+                }
+            ],
+            "description": "Block ip address of all spammer's around the world.",
+            "keywords": [
+                "Laravel Security",
+                "abuseipdb",
+                "framework",
+                "laravel",
+                "spam protection"
+            ],
+            "support": {
+                "issues": "https://github.com/rahulalam31/Laravel-Abuse-IP/issues",
+                "source": "https://github.com/rahulalam31/Laravel-Abuse-IP/tree/1.2"
+            },
+            "time": "2024-07-24T10:26:44+00:00"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -3568,6 +3637,88 @@
                 }
             ],
             "time": "2025-01-20T14:14:17+00:00"
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "6.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "fe973a58b44380d0e8620107259b7bda22f70408"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/fe973a58b44380d0e8620107259b7bda22f70408",
+                "reference": "fe973a58b44380d0e8620107259b7bda22f70408",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^8.12|^9.0|^10.0|^11.0",
+                "illuminate/container": "^8.12|^9.0|^10.0|^11.0",
+                "illuminate/contracts": "^8.12|^9.0|^10.0|^11.0",
+                "illuminate/database": "^8.12|^9.0|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "laravel/passport": "^11.0|^12.0",
+                "orchestra/testbench": "^6.23|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.4|^10.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "6.x-dev",
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 8.0 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/6.9.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-22T23:04:52+00:00"
         },
         {
             "name": "spatie/laravel-translatable",

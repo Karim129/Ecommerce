@@ -46,7 +46,7 @@ class ProductController extends Controller
             // $image = $request->file('image')->store('public/assets/uploads/Product');
             $image = ImageService::upload($request->file('image'), 'products');
 
-            $product = new Product;
+            $product = new Product();
             $product->category_id = $request->category_id;
             $product->name = ['ar' => $request->name_ar, 'en' => $request->name_en];
             $product->slug = $request->slug;

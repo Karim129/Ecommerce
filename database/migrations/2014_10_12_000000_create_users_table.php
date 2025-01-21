@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('pincode')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

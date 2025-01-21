@@ -5,7 +5,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\websiteController;
+use App\Http\Middleware\AbuseIp;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -47,7 +50,7 @@ Route::group(
         // Route::get('/', function () {
         //     return view('welcome');
         // });
-        Route::get('/', [websiteController::class, 'index']);
+        Route::middleware(AbuseIp::class)->get('/', [websiteController::class, 'index']);
         Route::get('/categories', [websiteController::class, 'getCategories'])->name('get_categories');
         Route::get('/category/{slug}', [websiteController::class, 'getCategoryBySlug'])->name('get_category_slug');
         Route::get('/category/{category_slug}/{product_slug}', [websiteController::class, 'getProductBySlug'])->name('get_product_slug');
@@ -65,3 +68,13 @@ Route::group(
     }
 
 );
+Route::get('settings', function () {
+    return view('settings');
+});
+Route::middleware('role:SuperAdmin')->group(function () {
+    Route::resource('roles', RoleController::class);
+    Route::post('roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
+    Route::delete('roles/{role}/permissions/{permission}', [RoleController::class,
+        'revokePermission'])->name('roles.permissions.revoke');
+    Route::resource('users', UserController::class);
+});

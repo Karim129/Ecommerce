@@ -30,16 +30,9 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     public function authenticated()
     {
-
-        if (Auth::user()->is_admin == 1) {
-            $data['route'] = 'dashboard';
-            $data['success'] = 'login Successfully';
-
-            return redirect()->route('dashboard')->with($data);
-
-        }
-
-        return redirect('/')->with('success', 'login Successfully');
+        return Auth::user()->is_admin == 1
+            ? redirect()->route('dashboard')->with(['route' => 'dashboard', 'success' => 'login Successfully'])
+            : redirect('/')->with('success', 'login Successfully');
     }
 
     /**
