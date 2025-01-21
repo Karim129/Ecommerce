@@ -10,7 +10,7 @@ class SettingSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
         $existingSetting = Setting::first();
 

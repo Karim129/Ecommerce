@@ -19,9 +19,7 @@ class RoleController extends Controller
 
     public function index(Request $request)
     {
-        $roles = Role::query()->when($request->input('search'), function ($query, $search) {
-            return $query->where('name', 'Like', "%{$search}%");
-        })->paginate(10)->appends($request->all());
+        $roles = Role::query()->when($request->input('search'), fn ($query, $search) => $query->where('name', 'Like', "%{$search}%"))->paginate(10)->appends($request->all());
 
         return view('roles.index', [
             'roles' => $roles,
@@ -53,7 +51,7 @@ class RoleController extends Controller
         $role->load('permissions');
         $permissions = Permission::get(['id', 'name']);
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('roles.edit', ['role' => $role, 'permissions' => $permissions]);
     }
 
     public function update(Request $request, Role $role)

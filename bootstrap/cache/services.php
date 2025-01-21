@@ -1,77 +1,77 @@
-<?php return array (
-  'providers' =>
-  array (
-    0 => 'Illuminate\\Auth\\AuthServiceProvider',
-    1 => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
-    2 => 'Illuminate\\Bus\\BusServiceProvider',
-    3 => 'Illuminate\\Cache\\CacheServiceProvider',
-    4 => 'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider',
-    5 => 'Illuminate\\Cookie\\CookieServiceProvider',
-    6 => 'Illuminate\\Database\\DatabaseServiceProvider',
-    7 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
-    8 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
-    9 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
-    10 => 'Illuminate\\Hashing\\HashServiceProvider',
-    11 => 'Illuminate\\Mail\\MailServiceProvider',
-    12 => 'Illuminate\\Notifications\\NotificationServiceProvider',
-    13 => 'Illuminate\\Pagination\\PaginationServiceProvider',
-    14 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
-    15 => 'Illuminate\\Queue\\QueueServiceProvider',
-    16 => 'Illuminate\\Redis\\RedisServiceProvider',
-    17 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
-    18 => 'Illuminate\\Session\\SessionServiceProvider',
-    19 => 'Illuminate\\Translation\\TranslationServiceProvider',
-    20 => 'Illuminate\\Validation\\ValidationServiceProvider',
-    21 => 'Illuminate\\View\\ViewServiceProvider',
-    22 => 'Laravel\\Sail\\SailServiceProvider',
-    23 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    24 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    25 => 'Laravel\\Ui\\UiServiceProvider',
-    26 => 'Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider',
-    27 => 'Carbon\\Laravel\\ServiceProvider',
-    28 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    29 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    30 => 'Flasher\\Laravel\\FlasherServiceProvider',
-    31 => 'RahulAlam31\\LaravelAbuseIp\\AbuseIPServiceProvider',
-    32 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    33 => 'Spatie\\Permission\\PermissionServiceProvider',
-    34 => 'Spatie\\Translatable\\TranslatableServiceProvider',
-    35 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
-    36 => 'App\\Providers\\AppServiceProvider',
-    37 => 'App\\Providers\\AuthServiceProvider',
-    38 => 'App\\Providers\\EventServiceProvider',
-    39 => 'App\\Providers\\RouteServiceProvider',
-  ),
-  'eager' =>
-  array (
-    0 => 'Illuminate\\Auth\\AuthServiceProvider',
-    1 => 'Illuminate\\Cookie\\CookieServiceProvider',
-    2 => 'Illuminate\\Database\\DatabaseServiceProvider',
-    3 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
-    4 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
-    5 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
-    6 => 'Illuminate\\Notifications\\NotificationServiceProvider',
-    7 => 'Illuminate\\Pagination\\PaginationServiceProvider',
-    8 => 'Illuminate\\Session\\SessionServiceProvider',
-    9 => 'Illuminate\\View\\ViewServiceProvider',
-    10 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    11 => 'Laravel\\Ui\\UiServiceProvider',
-    12 => 'Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider',
-    13 => 'Carbon\\Laravel\\ServiceProvider',
-    14 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    15 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    16 => 'Flasher\\Laravel\\FlasherServiceProvider',
-    17 => 'RahulAlam31\\LaravelAbuseIp\\AbuseIPServiceProvider',
-    18 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    19 => 'Spatie\\Permission\\PermissionServiceProvider',
-    20 => 'Spatie\\Translatable\\TranslatableServiceProvider',
-    21 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
-    22 => 'App\\Providers\\AppServiceProvider',
-    23 => 'App\\Providers\\AuthServiceProvider',
-    24 => 'App\\Providers\\EventServiceProvider',
-    25 => 'App\\Providers\\RouteServiceProvider',
-  ),
-  'deferred' =>
+<?php return  [
+  'providers' => 
+   [
+    0 => \Illuminate\Auth\AuthServiceProvider::class,
+    1 => \Illuminate\Broadcasting\BroadcastServiceProvider::class,
+    2 => \Illuminate\Bus\BusServiceProvider::class,
+    3 => \Illuminate\Cache\CacheServiceProvider::class,
+    4 => \Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+    5 => \Illuminate\Cookie\CookieServiceProvider::class,
+    6 => \Illuminate\Database\DatabaseServiceProvider::class,
+    7 => \Illuminate\Encryption\EncryptionServiceProvider::class,
+    8 => \Illuminate\Filesystem\FilesystemServiceProvider::class,
+    9 => \Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+    10 => \Illuminate\Hashing\HashServiceProvider::class,
+    11 => \Illuminate\Mail\MailServiceProvider::class,
+    12 => \Illuminate\Notifications\NotificationServiceProvider::class,
+    13 => \Illuminate\Pagination\PaginationServiceProvider::class,
+    14 => \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
+    15 => \Illuminate\Pipeline\PipelineServiceProvider::class,
+    16 => \Illuminate\Queue\QueueServiceProvider::class,
+    17 => \Illuminate\Redis\RedisServiceProvider::class,
+    18 => \Illuminate\Session\SessionServiceProvider::class,
+    19 => \Illuminate\Translation\TranslationServiceProvider::class,
+    20 => \Illuminate\Validation\ValidationServiceProvider::class,
+    21 => \Illuminate\View\ViewServiceProvider::class,
+    22 => \Laravel\Sail\SailServiceProvider::class,
+    23 => \Laravel\Sanctum\SanctumServiceProvider::class,
+    24 => \Laravel\Tinker\TinkerServiceProvider::class,
+    25 => \Laravel\Ui\UiServiceProvider::class,
+    26 => \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+    27 => \Carbon\Laravel\ServiceProvider::class,
+    28 => \NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
+    29 => \Termwind\Laravel\TermwindServiceProvider::class,
+    30 => \Flasher\Laravel\FlasherServiceProvider::class,
+    31 => \RahulAlam31\LaravelAbuseIp\AbuseIPServiceProvider::class,
+    32 => \Spatie\LaravelIgnition\IgnitionServiceProvider::class,
+    33 => \Spatie\Permission\PermissionServiceProvider::class,
+    34 => \Spatie\Translatable\TranslatableServiceProvider::class,
+    35 => \Yoeunes\Toastr\ToastrServiceProvider::class,
+    36 => \App\Providers\AppServiceProvider::class,
+    37 => \App\Providers\AuthServiceProvider::class,
+    38 => \App\Providers\EventServiceProvider::class,
+    39 => \App\Providers\RouteServiceProvider::class,
+  ],
+  'eager' => 
+   [
+    0 => \Illuminate\Auth\AuthServiceProvider::class,
+    1 => \Illuminate\Cookie\CookieServiceProvider::class,
+    2 => \Illuminate\Database\DatabaseServiceProvider::class,
+    3 => \Illuminate\Encryption\EncryptionServiceProvider::class,
+    4 => \Illuminate\Filesystem\FilesystemServiceProvider::class,
+    5 => \Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+    6 => \Illuminate\Notifications\NotificationServiceProvider::class,
+    7 => \Illuminate\Pagination\PaginationServiceProvider::class,
+    8 => \Illuminate\Session\SessionServiceProvider::class,
+    9 => \Illuminate\View\ViewServiceProvider::class,
+    10 => \Laravel\Sanctum\SanctumServiceProvider::class,
+    11 => \Laravel\Ui\UiServiceProvider::class,
+    12 => \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+    13 => \Carbon\Laravel\ServiceProvider::class,
+    14 => \NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
+    15 => \Termwind\Laravel\TermwindServiceProvider::class,
+    16 => \Flasher\Laravel\FlasherServiceProvider::class,
+    17 => \RahulAlam31\LaravelAbuseIp\AbuseIPServiceProvider::class,
+    18 => \Spatie\LaravelIgnition\IgnitionServiceProvider::class,
+    19 => \Spatie\Permission\PermissionServiceProvider::class,
+    20 => \Spatie\Translatable\TranslatableServiceProvider::class,
+    21 => \Yoeunes\Toastr\ToastrServiceProvider::class,
+    22 => \App\Providers\AppServiceProvider::class,
+    23 => \App\Providers\AuthServiceProvider::class,
+    24 => \App\Providers\EventServiceProvider::class,
+    25 => \App\Providers\RouteServiceProvider::class,
+  ],
+  'deferred' => 
    [
     \Illuminate\Broadcasting\BroadcastManager::class => \Illuminate\Broadcasting\BroadcastServiceProvider::class,
     \Illuminate\Contracts\Broadcasting\Factory::class => \Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -216,48 +216,48 @@
     \Laravel\Sail\Console\PublishCommand::class => \Laravel\Sail\SailServiceProvider::class,
     'command.tinker' => \Laravel\Tinker\TinkerServiceProvider::class,
   ],
-  'when' =>
+  'when' => 
    [
-    \Illuminate\Broadcasting\BroadcastServiceProvider::class =>
+    \Illuminate\Broadcasting\BroadcastServiceProvider::class => 
      [
     ],
-    \Illuminate\Bus\BusServiceProvider::class =>
+    \Illuminate\Bus\BusServiceProvider::class => 
      [
     ],
-    \Illuminate\Cache\CacheServiceProvider::class =>
+    \Illuminate\Cache\CacheServiceProvider::class => 
      [
     ],
-    \Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class =>
+    \Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class => 
      [
     ],
-    \Illuminate\Hashing\HashServiceProvider::class =>
+    \Illuminate\Hashing\HashServiceProvider::class => 
      [
     ],
-    \Illuminate\Mail\MailServiceProvider::class =>
+    \Illuminate\Mail\MailServiceProvider::class => 
      [
     ],
-    \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class =>
+    \Illuminate\Auth\Passwords\PasswordResetServiceProvider::class => 
      [
     ],
-    \Illuminate\Pipeline\PipelineServiceProvider::class =>
+    \Illuminate\Pipeline\PipelineServiceProvider::class => 
      [
     ],
-    \Illuminate\Queue\QueueServiceProvider::class =>
+    \Illuminate\Queue\QueueServiceProvider::class => 
      [
     ],
-    \Illuminate\Redis\RedisServiceProvider::class =>
+    \Illuminate\Redis\RedisServiceProvider::class => 
      [
     ],
-    \Illuminate\Translation\TranslationServiceProvider::class =>
+    \Illuminate\Translation\TranslationServiceProvider::class => 
      [
     ],
-    \Illuminate\Validation\ValidationServiceProvider::class =>
+    \Illuminate\Validation\ValidationServiceProvider::class => 
      [
     ],
-    \Laravel\Sail\SailServiceProvider::class =>
+    \Laravel\Sail\SailServiceProvider::class => 
      [
     ],
-    \Laravel\Tinker\TinkerServiceProvider::class =>
+    \Laravel\Tinker\TinkerServiceProvider::class => 
      [
     ],
   ],

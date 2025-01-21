@@ -68,10 +68,8 @@ Route::group(
     }
 
 );
-Route::get('settings', function () {
-    return view('settings');
-});
-Route::middleware('role:SuperAdmin')->group(function () {
+Route::get('settings', fn () => view('settings'));
+Route::middleware('role:SuperAdmin')->group(function (): void {
     Route::resource('roles', RoleController::class);
     Route::post('roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
     Route::delete('roles/{role}/permissions/{permission}', [RoleController::class,

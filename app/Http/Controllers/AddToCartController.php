@@ -34,17 +34,13 @@ class AddToCartController extends Controller
             if (Cart::where('product_id', $product_id)->where('user_id', $user_id)->exists()) {
                 return response()->json(['msg' => 'product in your cart already']);
 
-
-                } else {
-                    Cart::create([
-                        'user_id' => $user_id,
-                        'product_id' => $product_id,
-                        'qty' => $qty
-                    ]);
-
-                    $product_name = Product::findOrFail($product_id);
-                    return response()->json(['msg' => $product_name->name . " successfully added to your cart"]);
-                }
+            }
+            Cart::create([
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+                'qty' => $qty,
+            ]);
+            $product_name = Product::findOrFail($product_id);
 
             return response()->json(['msg' => $product_name->name.' successfully added to your cart']);
 

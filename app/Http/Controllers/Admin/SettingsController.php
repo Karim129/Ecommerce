@@ -16,13 +16,14 @@ class SettingsController extends Controller
             $settings['footer_logo'] = asset($settings['footer_logo']);
             //  dd($settings);
 
-            return view('setting/index', compact('settings'));
-        } else {
-            abort(404, 'Settings not found');
+            return view('setting/index', ['settings' => $settings]);
         }
+        abort(404, 'Settings not found');
+
+        return null;
     }
 
-    public function update(Request $request)
+    public function update(Request $request): void
     {
         $settings = Setting::first();
         if ($settings) {
@@ -47,7 +48,7 @@ class SettingsController extends Controller
 
             $settings->company_info = json_encode($existingContacts);
             $settings->save();
-        // dd($settings);
+            // dd($settings);
         } else {
             abort(404, 'Settings not found');
         }

@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::query()->when(request('search'), function ($query) {
+        $users = User::query()->when(request('search'), function ($query): void {
 
             $query->where('name', 'like', '%'.request('search').'%');
 

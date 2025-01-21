@@ -18,13 +18,11 @@ return [
         'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/master/abuseipdb-s100-all.ipv4',
     ],
 
-    'abuse_ips' => function () {
-        return Cache::get('abuse_ips', function () {
-            $path = config('abuseip.storage');
+    'abuse_ips' => fn () => Cache::get('abuse_ips', function () {
+        $path = config('abuseip.storage');
 
-            return file_exists($path) ? json_decode(file_get_contents($path), true) : [];
-        });
-    },
+        return file_exists($path) ? json_decode(file_get_contents($path), true) : [];
+    }),
 
     'storage' => storage_path('framework/abuseip.json'),
 ];

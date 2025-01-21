@@ -1,102 +1,116 @@
-<?php return array (
-  'laravel/sail' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Laravel\\Sail\\SailServiceProvider',
-    ),
-  ),
-  'laravel/sanctum' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    ),
-  ),
-  'laravel/tinker' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
-  'laravel/ui' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Laravel\\Ui\\UiServiceProvider',
-    ),
-  ),
-  'mcamara/laravel-localization' =>
-  array (
-    'aliases' =>
-    array (
-      'LaravelLocalization' => 'Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization',
-    ),
-    'providers' =>
-    array (
-      0 => 'Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider',
-    ),
-  ),
-  'nesbot/carbon' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
-    ),
-  ),
-  'nunomaduro/collision' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
-  'nunomaduro/termwind' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    ),
-  ),
-  'php-flasher/flasher-laravel' =>
-  array (
-    'aliases' =>
-    array (
-      'Flasher' => 'Flasher\\Laravel\\Facade\\Flasher',
-    ),
-    'providers' =>
-    array (
-      0 => 'Flasher\\Laravel\\FlasherServiceProvider',
-    ),
-  ),
-  'spatie/laravel-ignition' =>
-  array (
-    'aliases' =>
-    array (
-      'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
-    ),
-    'providers' =>
-    array (
-      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    ),
-  ),
-  'spatie/laravel-translatable' =>
-  array (
-    'providers' =>
-    array (
-      0 => 'Spatie\\Translatable\\TranslatableServiceProvider',
-    ),
-  ),
-  'yoeunes/toastr' =>
-  array (
-    'aliases' =>
-    array (
-      'Toastr' => 'Yoeunes\\Toastr\\Facades\\Toastr',
-    ),
-    'providers' =>
-    array (
-      0 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
-    ),
-  ),
-);
+<?php return  [
+  'laravel/sail' => 
+   [
+    'providers' => 
+     [
+      0 => \Laravel\Sail\SailServiceProvider::class,
+    ],
+  ],
+  'laravel/sanctum' => 
+   [
+    'providers' => 
+     [
+      0 => \Laravel\Sanctum\SanctumServiceProvider::class,
+    ],
+  ],
+  'laravel/tinker' => 
+   [
+    'providers' => 
+     [
+      0 => \Laravel\Tinker\TinkerServiceProvider::class,
+    ],
+  ],
+  'laravel/ui' => 
+   [
+    'providers' => 
+     [
+      0 => \Laravel\Ui\UiServiceProvider::class,
+    ],
+  ],
+  'mcamara/laravel-localization' => 
+   [
+    'aliases' => 
+     [
+      'LaravelLocalization' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+    ],
+    'providers' => 
+     [
+      0 => \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+    ],
+  ],
+  'nesbot/carbon' => 
+   [
+    'providers' => 
+     [
+      0 => \Carbon\Laravel\ServiceProvider::class,
+    ],
+  ],
+  'nunomaduro/collision' => 
+   [
+    'providers' => 
+     [
+      0 => \NunoMaduro\Collision\Adapters\Laravel\CollisionServiceProvider::class,
+    ],
+  ],
+  'nunomaduro/termwind' => 
+   [
+    'providers' => 
+     [
+      0 => \Termwind\Laravel\TermwindServiceProvider::class,
+    ],
+  ],
+  'php-flasher/flasher-laravel' => 
+   [
+    'aliases' => 
+     [
+      'Flasher' => \Flasher\Laravel\Facade\Flasher::class,
+    ],
+    'providers' => 
+     [
+      0 => \Flasher\Laravel\FlasherServiceProvider::class,
+    ],
+  ],
+  'rahulalam31/laravel-abuse-ip' => 
+   [
+    'providers' => 
+     [
+      0 => \RahulAlam31\LaravelAbuseIp\AbuseIPServiceProvider::class,
+    ],
+  ],
+  'spatie/laravel-ignition' => 
+   [
+    'aliases' => 
+     [
+      'Flare' => \Spatie\LaravelIgnition\Facades\Flare::class,
+    ],
+    'providers' => 
+     [
+      0 => \Spatie\LaravelIgnition\IgnitionServiceProvider::class,
+    ],
+  ],
+  'spatie/laravel-permission' => 
+   [
+    'providers' => 
+     [
+      0 => \Spatie\Permission\PermissionServiceProvider::class,
+    ],
+  ],
+  'spatie/laravel-translatable' => 
+   [
+    'providers' => 
+     [
+      0 => \Spatie\Translatable\TranslatableServiceProvider::class,
+    ],
+  ],
+  'yoeunes/toastr' => 
+   [
+    'aliases' => 
+     [
+      'Toastr' => \Yoeunes\Toastr\Facades\Toastr::class,
+    ],
+    'providers' => 
+     [
+      0 => \Yoeunes\Toastr\ToastrServiceProvider::class,
+    ],
+  ],
+];

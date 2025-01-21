@@ -24,6 +24,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         dd($data);
+
         return Validator::make($data, [
             'fname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
@@ -41,6 +42,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         dd($data);
+
         return User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
