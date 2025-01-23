@@ -21,6 +21,10 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
+        \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class,
+
+
     ];
 
     /**
@@ -36,6 +40,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // \Spatie\Permission\Middleware\PermissionMiddleware::class,
+
+
         ],
 
         'api' => [
@@ -70,5 +77,7 @@ class Kernel extends HttpKernel
         'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         'is_admin' => \App\Http\Middleware\IsAdminMiddleware::class,
+        'abuseip' => \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class,
+
     ];
 }

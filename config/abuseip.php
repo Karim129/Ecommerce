@@ -4,25 +4,52 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ABUSE_IP Source URL
+    | AbuseIP Source URL
     |--------------------------------------------------------------------------
     |
-    | The source URLs yielding a list of disposable email domains. Change these
-    | to whatever source you like. Just make sure they all return a JSON array.
-    |
-    | A sensible default is provided using jsDelivr's services. jsDelivr is
-    | a free service, so there are no uptime or support guarantees.
+    | The source URLs yielding a list of abusive IPs. Change these to whatever
+    | sources you like. Just make sure they are separated by newlines.
     |
     */
     'source' => [
-        'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/master/abuseipdb-s100-all.ipv4',
+        // https://github.com/borestad/blocklist-abuseipdb
+        // Do not use the abuseipdb-s100-all.ipv4. It is only exposed for statistical usage.
+        // Recommended usage is the maximum 30 days or less to avoid false positives.
+        // 30 Days list
+        // 'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-30d.ipv4',
+        // 14 Days list
+        'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-14d.ipv4'
     ],
 
-    'abuse_ips' => fn () => Cache::get('abuse_ips', function () {
-        $path = config('abuseip.storage');
+    /*
+    |--------------------------------------------------------------------------
+    | IP Whitelist
+    |--------------------------------------------------------------------------
+    |
+    | The IP addresses listed here will bypass the blocking middleware.
+    | You can add IPs as strings, and they will be checked before blocking logic.
+    |
+    */
+    'whitelist' => [
+        '127.0.0.1', // Localhost example
+        // Add more IPs here...
+    ],
 
-        return file_exists($path) ? json_decode(file_get_contents($path), true) : [];
-    }),
-
-    'storage' => storage_path('framework/abuseip.json'),
+    /*
+    |--------------------------------------------------------------------------
+    | AbuseIP Storage
+    |--------------------------------------------------------------------------
+    |
+    | The path to store the abuseip.json file which is cached upon retrieval.
+    | By default using the compress option, where the IPs are stored as integers.
+    | If you prefer to keep the IPs as strings and store them in a human-readable
+    | format using JSON_PRETTY_PRINT, set the compress option to false.
+    |
+    */
+    'storage' => [
+        'path' => storage_path(
+            env('ABUSEIP_STORAGE_PATH', 'framework/cache/abuseip.json')
+        ),
+        'compress' => env('ABUSEIP_STORAGE_COMPRESS', true),
+    ],
 ];

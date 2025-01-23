@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class SettingsController extends Controller
             $settings['footer_logo'] = asset($settings['footer_logo']);
             //  dd($settings);
 
-            return view('setting/index', ['settings' => $settings]);
+            return view('admin.Settings.edit', ['settings' => $settings]);
         }
         abort(404, 'Settings not found');
 

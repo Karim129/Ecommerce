@@ -17,15 +17,23 @@ class IsAdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->is_admin == 1) {
+            if (Auth::user()->hasRole('SuperAdmin')) {
                 return $next($request);
-
             }
             abort(404);
-
         } else {
 
             return redirect()->back()->with('status', 'you should log in');
+        }
+    }
+
+    /**
+     * Get the path the user should be redirected to when they are not authenticated.
+     */
+    protected function redirectTo(Request $request): string
+    {
+        if (! $request->expectsJson()) {
+            return route('login');
         }
     }
 }

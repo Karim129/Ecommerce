@@ -35,7 +35,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('categories.index')}}" class="nav-link {{$route == 'categories' ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-list-alt"></i>
                         <p>
                             {{trans('admin_sidebar_trans.Category')}}
 
@@ -48,6 +48,16 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             {{trans('admin_sidebar_trans.Product')}}
+
+                        </p>
+                    </a>
+                </li>
+                                <li class="nav-item">
+                    <a href="{{route('settings.edit')}}" class="nav-link {{$route == 'settings' ? 'active' : ''}}">
+
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Settings
 
                         </p>
                     </a>

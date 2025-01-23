@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AbuseIp
 {
@@ -13,7 +14,7 @@ class AbuseIp
 
         if (in_array($request->ip(), $abuseip)) {
 
-            // Log::info('Blocking IP: ' . $request->ip());
+            Log::info('Blocking IP: ' . $request->ip());
             return response('Your IP address has been blocked', 403);
         }
 

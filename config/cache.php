@@ -51,6 +51,8 @@ return [
 
         'file' => [
             'driver' => 'file',
+            // 'path' => __DIR__.'/../storage/framework/cache/data',
+            // 'lock_path' => __DIR__.'/../storage/framework/cache/data',
             'path' => storage_path('framework/cache/data'),
             'lock_path' => storage_path('framework/cache/data'),
         ],
@@ -109,3 +111,5 @@ return [
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
 
 ];
+
+// echo "prefix: ".config('cache.prefix')."\n";

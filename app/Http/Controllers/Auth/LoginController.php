@@ -30,7 +30,7 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     public function authenticated()
     {
-        return Auth::user()->is_admin == 1
+        return Auth::user()->hasRole('SuperAdmin')
             ? redirect()->route('dashboard')->with(['route' => 'dashboard', 'success' => 'login Successfully'])
             : redirect('/')->with('success', 'login Successfully');
     }
