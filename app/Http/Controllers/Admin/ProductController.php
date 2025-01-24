@@ -7,6 +7,7 @@ use App\Http\Requests\storeProductRequest;
 use App\Http\Requests\upateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,7 @@ class ProductController extends Controller
         $data['route'] = 'products';
         $data['products'] = Product::select('id', 'category_id', 'name', 'image', 'status', 'trend')->get();
 
-        return view('admin.product.index', $data);
+        return view('admin.product.index', $data, ['settings' => Setting::first()]);
     }
 
     /**
@@ -31,7 +32,7 @@ class ProductController extends Controller
         $data['route'] = 'products';
         $data['categories'] = Category::select('id', 'name')->get();
 
-        return view('admin.product.create', $data);
+        return view('admin.product.create', $data, ['settings' => Setting::first()]);
     }
 
     /**
@@ -79,7 +80,7 @@ class ProductController extends Controller
         $data['route'] = 'products';
         $data['product'] = $product;
 
-        return view('admin.product.show', $data);
+        return view('admin.product.show', $data, ['settings' => Setting::first()]);
     }
 
     /**
@@ -91,7 +92,7 @@ class ProductController extends Controller
         $data['product'] = $product;
         $data['categories'] = Category::select('id', 'name')->get();
 
-        return view('admin.product.edit', $data);
+        return view('admin.product.edit', $data, ['settings' => Setting::first()]);
     }
 
     /**

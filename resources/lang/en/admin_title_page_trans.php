@@ -10,4 +10,5 @@ return [
     'create_product' => 'create_product',
     'edit_product' => 'edit product',
     'show_product' => 'show_product',
+    'settings' => 'settings',
 ];

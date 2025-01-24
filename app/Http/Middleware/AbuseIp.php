@@ -14,7 +14,8 @@ class AbuseIp
 
         if (in_array($request->ip(), $abuseip)) {
 
-            Log::info('Blocking IP: ' . $request->ip());
+            Log::info('Blocking IP: '.$request->ip());
+
             return response('Your IP address has been blocked', 403);
         }
 

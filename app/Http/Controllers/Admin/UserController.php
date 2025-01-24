@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Models\User;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -19,8 +20,10 @@ class UserController extends Controller
             $query->where('name', 'like', '%'.request('search').'%');
 
         })->orderBy('created_at', 'desc')->paginate(10);
+        $setting = Setting::first();
+        $settings = json_decode($setting);
 
-        return view('Users/index', ['users' => $users]);
+        return view('Users/index', ['users' => $users, 'settings' => $settings]);
     }
 
     /**
@@ -28,7 +31,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('Users/create');
+        $setting = Setting::first();
+        $settings = json_decode($setting);
+
+        return view('Users/create', ['settings' => $settings]);
     }
 
     /**
@@ -50,7 +56,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('Users/show', ['user' => $user]);
+        $setting = Setting::first();
+        $settings = json_decode($setting);
+
+        return view('Users/show', ['user' => $user, 'settings' => $settings]);
     }
 
     /**
@@ -58,7 +67,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('Users/edit', ['user' => $user]);
+        $setting = Setting::first();
+        $settings = json_decode($setting);
+
+        return view('Users/edit', ['user' => $user, 'settings' => $settings]);
     }
 
     /**

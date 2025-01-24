@@ -24,7 +24,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class,
 
-
     ];
 
     /**
@@ -41,7 +40,6 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             // \Spatie\Permission\Middleware\PermissionMiddleware::class,
-
 
         ],
 

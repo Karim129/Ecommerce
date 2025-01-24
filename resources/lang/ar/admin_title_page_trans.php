@@ -10,5 +10,6 @@ return [
     'create_product' => 'اضافة منتج',
     'edit_product' => 'تعديل منتج',
     'show_product' => 'عرض منتج',
+    'settings' => 'الاعدادات',
 
 ];

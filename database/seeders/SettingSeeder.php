@@ -20,13 +20,11 @@ class SettingSeeder extends Seeder
                     'phone' => '123-456-7890',
                     'email' => 'example@example.com',
                     'whatsapp' => '123-456-7890',
-                    // 'address' => 'address',
-                    // 'facebook' => 'https://www.facebook.com',
-                    // 'header_logo' => asset('/storage/Setting/MainAfter.webp'),
-                    // 'footer_logo' => asset('/storage/Setting/MainAfter.webp'),
-                    // 'about' => 'about',
-                    // 'mission' => 'mission',
-                    // 'vision' => 'vision',
+                    'address' => 'address',
+                    'facebook' => 'https://www.facebook.com',
+                    'header_logo' => asset('/storage/Setting/17375970456791a075b69ff.png'),
+                    'footer_logo' => asset('/storage/Setting/MainAfter.webp'),
+
                 ]),
             ]);
         }

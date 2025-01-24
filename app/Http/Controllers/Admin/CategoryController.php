@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\storeCategoryRequest;
 use App\Http\Requests\updateCategoryRequest;
 use App\Models\Category;
+use App\Models\Setting;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +20,7 @@ class CategoryController extends Controller
         $data['route'] = 'categories';
         $data['categories'] = Category::select('id', 'name', 'image', 'is_showing', 'is_popular')->get();
 
-        return view('admin.category.index', $data);
+        return view('admin.category.index', $data, ['settings' => Setting::first()]);
     }
 
     /**
@@ -29,7 +30,7 @@ class CategoryController extends Controller
     {
         $data['route'] = 'categories';
 
-        return view('admin.category.create', $data);
+        return view('admin.category.create', $data, ['settings' => Setting::first()]);
     }
 
     /**
@@ -72,7 +73,7 @@ class CategoryController extends Controller
         $data['route'] = 'categories';
         $data['category'] = $category;
 
-        return view('admin.category.show', $data);
+        return view('admin.category.show', $data, ['settings' => Setting::first()]);
     }
 
     /**
@@ -83,7 +84,7 @@ class CategoryController extends Controller
         $data['route'] = 'categories';
         $data['category'] = $category;
 
-        return view('admin.category.edit', $data);
+        return view('admin.category.edit', $data, ['settings' => Setting::first()]);
     }
 
     /**

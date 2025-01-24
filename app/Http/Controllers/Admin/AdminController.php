@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,8 +14,10 @@ class AdminController extends Controller
     public function index()
     {
         $data['route'] = 'dashboard';
+        $setting = Setting::first();
+        $settings = json_decode($setting);
 
-        return view('admin.dashboard', $data);
+        return view('admin.dashboard', $data, ['settings' => $settings]);
     }
 
     /**
