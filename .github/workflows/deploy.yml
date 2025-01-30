@@ -1,0 +1,36 @@
+name: Deploy to Byethost via FTP
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and build assets
+        run: |
+          composer install --no-dev --optimize-autoloader
+          npm ci
+          npm run build
+
+      - name: Deploy to Byethost via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
+        with:
+          ftp-server: ${{ secrets.FTP_SERVER }}
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: build
+          server-dir: ${{ secrets.FTP_REMOTE_PATH }}
+          exclude: |
+            .env
+            .git/*
+            .github/*
+            node_modules/
+            storage/*
+            tests/
