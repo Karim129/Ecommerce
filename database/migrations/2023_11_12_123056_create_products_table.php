@@ -14,20 +14,20 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table): void {
             $table->id();
             $table->foreignId('category_id')->constrained();
-            $table->string('name');
-            $table->string('slug');
-            $table->mediumText('short_description');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->Text('short_description');
             $table->longText('description');
-            $table->string('price');
+            $table->integer('price');
             $table->string('selling_price');
             $table->string('image');
-            $table->string('qty');
-            $table->string('tax');
+            $table->integer('qty');
+            $table->integer('tax');
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('trend')->default(0);
             $table->string('meta_title');
             $table->string('meta_keywords');
-            $table->json('meta_description');
+            $table->Text('meta_description');
             $table->timestamps();
         });
     }

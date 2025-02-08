@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             ]);
 
             $user->assignRole('SuperAdmin');
-            User::factory(10)->create()->each(function ($user): void {
+            User::factory(100)->create()->each(function ($user): void {
                 $user->assignRole('Admin');
             });
 

@@ -16,4 +16,7 @@ class CheckOutController extends Controller
 
         return view('website.checkout.index', $data);
     }
+    // $user = Auth::user()->load('carts');
+
+    // return view('website.checkout.index', compact('user'));
 }

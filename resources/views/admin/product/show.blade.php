@@ -19,17 +19,13 @@
         @if (session('error_catch'))
             <div class="bg-danger">{{ session('error_catch') }}</div>
         @endif
-
+            <div class="row my-2">
+                <div class="col">
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-primary"><i class="fa fa-arrow-left"></i> Back</a>
+                </div>
+            </div>
         <form action="#">
-            {{--            <div class="row my-2"> --}}
-            {{--                <label for="name_ar">{{trans('product_trans.category')}}</label> --}}
-            {{--                <select name="category_id" id="" class="form-control"> --}}
-            {{--                    <option value="">{{trans('product_trans.please_select')}}</option> --}}
-            {{--                    @foreach ($categories as $category) --}}
-            {{--                        <option value="{{$category->id}}" {{($product->category_id == $category->id) ? 'selected' : ''}} >{{$category->name}}</option> --}}
-            {{--                    @endforeach --}}
-            {{--                </select> --}}
-            {{--            </div> --}}
+
             <div class="row my-2">
                 <div class="col">
                     <label for="name_ar">{{ trans('product_trans.category') }}</label>
@@ -68,7 +64,7 @@
                         <label for="image">{{ trans('product_trans.image') }}</label>
                         <div class="col">
                             <img src="{{ asset($product->image) }}" alt="" class="img-thumbnail"
-                                style="max-width:100px;">
+                                style="width:200px;height:200px;">
                         </div>
 
                     </div>
@@ -202,13 +198,15 @@
             <div class="row my-2">
                 <div class="col">
                     <label for="meta_keywords">{{ trans('product_trans.meta_keyword') }}</label><span
-                        class="text-danger">{{ trans('product_trans.meta_keyword_note') }}</span>
+                        class="text-danger ml-2">{{ trans('product_trans.meta_keyword_note') }}</span>
                     <div class="input-group mb-3">
                         <textarea readonly name="meta_keywords" rows="3" cols="3" class="form-control ">{{ $product->meta_keywords }}</textarea>
                     </div>
 
                 </div>
             </div>
+
+
         </form>
     </div>
 

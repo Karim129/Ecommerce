@@ -28,7 +28,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    public function authenticated()
+    public function authenticated(\Illuminate\Http\Request $request, $user)
     {
         return Auth::user()->hasRole('SuperAdmin')
             ? redirect()->route('dashboard')->with(['route' => 'dashboard', 'success' => 'login Successfully'])

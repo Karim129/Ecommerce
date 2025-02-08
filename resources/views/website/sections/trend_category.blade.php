@@ -6,12 +6,12 @@
             @foreach ($categories as $category)
                 <div class="item">
                     <a href="{{ route('get_category_slug', $category->slug) }}">
-                        <div class="card my-5" style="width: 18rem;">
+                        <div class="card my-5" style="height: 600px">
                             <img src="{{ asset($category->image) }}" class=" card-img-top img-responsive"
-                                style="height: 250px; width: 100%;" alt="...">
+                                style="height: 300px;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $category->meta_title }}</h5>
-                                <p class="card-text">{{ $category->meta_description }}</p>
+                                <p class="card-text">{{ Str::limit($category->meta_description) }}</p>
                             </div>
                         </div>
                     </a>

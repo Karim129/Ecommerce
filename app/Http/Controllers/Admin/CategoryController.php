@@ -132,6 +132,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         ImageService::delete($category->image);
+        $category->products()->delete();
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', trans('messages_trans.success_delete'));

@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CheckOutController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\websiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,12 +33,11 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function (): void {
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
-        Route::get('/', [websiteController::class, 'index']);
+        Route::get('/', [websiteController::class, 'index'])->name('home');
         Route::get('/GetSettings', [SettingsController::class,  'GetData'])->name('GetSettings');
         Route::get('/categories', [websiteController::class, 'getCategories'])->name('get_categories');
         Route::get('/category/{slug}', [websiteController::class, 'getCategoryBySlug'])->name('get_category_slug');
-        Route::get('/category/{category_slug}/{product_slug}', [websiteController::class, 'getProductBySlug'])->name('get_product_slug');
+        Route::get('/product/{category_slug}/{product_slug}', [websiteController::class, 'getProductBySlug'])->name('get_product_slug');
         Route::post('/product/add_to_cart', [AddToCartController::class, 'addToCart'])->name('product.addToCart');
 
         Route::group([
@@ -50,17 +48,19 @@ Route::group(
             Route::post('cart/update', [AddToCartController::class, 'update'])->name('cart.update');
             Route::get('checkout/', [CheckOutController::class, 'index'])->name('checkout.index');
         });
-
     }
 
 );
-Route::middleware('is_admin')->group(function (): void {
+
+Route::middleware(['is_admin'])->group(function (): void {
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.edit');
     Route::Put('settings', [SettingsController::class, 'update'])->name('settings.update');
     Route::resource('roles', RoleController::class);
     Route::post('roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
-    Route::delete('roles/{role}/permissions/{permission}', [RoleController::class,
-        'revokePermission'])->name('roles.permissions.revoke');
+    Route::delete('roles/{role}/permissions/{permission}', [
+        RoleController::class,
+        'revokePermission',
+    ])->name('roles.permissions.revoke');
     Route::resource('users', UserController::class);
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

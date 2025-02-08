@@ -19,5 +19,6 @@ class AppServiceProvider extends ServiceProvider
     {
 
         // Model::preventLazyLoading(! app()->isProduction());
+        // \URL::forceScheme("https");
     }
 }

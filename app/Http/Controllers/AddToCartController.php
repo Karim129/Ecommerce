@@ -19,34 +19,30 @@ class AddToCartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $product_id = $request->product_id;
+        $productId = $request->product_id;
         $qty = $request->qty;
-        $user_id = Auth::id();
 
-        if (Auth::check()) {
-
-            $product = Product::where('id', $product_id)->exists();
-            if (! $product) {
-
-                return response()->json(['msg' => 'product not found']);
-
-            }
-            if (Cart::where('product_id', $product_id)->where('user_id', $user_id)->exists()) {
-                return response()->json(['msg' => 'product in your cart already']);
-
-            }
-            Cart::create([
-                'user_id' => $user_id,
-                'product_id' => $product_id,
-                'qty' => $qty,
-            ]);
-            $product_name = Product::findOrFail($product_id);
-
-            return response()->json(['msg' => $product_name->name.' successfully added to your cart']);
-
+        if (! Auth::check()) {
+            return response()->json(['msg' => 'login first']);
         }
 
-        return response()->json(['msg' => 'login first']);
+        if (! Product::where('id', $productId)->exists()) {
+            return response()->json(['msg' => 'product not found']);
+        }
+
+        if (Cart::where('product_id', $productId)->where('user_id', Auth::id())->exists()) {
+            return response()->json(['msg' => 'product in your cart already']);
+        }
+
+        Cart::create([
+            'user_id' => Auth::id(),
+            'product_id' => $productId,
+            'qty' => $qty,
+        ]);
+
+        $productName = Product::findOrFail($productId)->name;
+
+        return response()->json(['msg' => "$productName successfully added to your cart"]);
     }
 
     public function destroy($id)
@@ -65,7 +61,6 @@ class AddToCartController extends Controller
                 $cart->update([
                     'qty' => $request->qty,
                 ]);
-
             }
 
             return response()->json(['msg' => 'cart updated']);
