@@ -19,19 +19,26 @@ class AddToCartController extends Controller
 
     public function addToCart(Request $request)
     {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'qty' => 'required|integer|min:1',
+        ]);
+
+        if (! Auth::check()) {
+            return response()->json(['msg' => 'Please log in to add items to your cart.']);
+        }
+
         $productId = $request->product_id;
         $qty = $request->qty;
 
-        if (! Auth::check()) {
-            return response()->json(['msg' => 'login first']);
-        }
-
-        if (! Product::where('id', $productId)->exists()) {
-            return response()->json(['msg' => 'product not found']);
-        }
+        $product = Product::find($productId);
 
         if (Cart::where('product_id', $productId)->where('user_id', Auth::id())->exists()) {
-            return response()->json(['msg' => 'product in your cart already']);
+            return response()->json(['msg' => 'This product is already in your cart.']);
+        }
+
+        if ($product->qty < $qty) {
+            return response()->json(['msg' => 'Insufficient stock for this product.']);
         }
 
         Cart::create([
@@ -40,9 +47,7 @@ class AddToCartController extends Controller
             'qty' => $qty,
         ]);
 
-        $productName = Product::findOrFail($productId)->name;
-
-        return response()->json(['msg' => "$productName successfully added to your cart"]);
+        return response()->json(['msg' => "$product->name has been successfully added to your cart."]);
     }
 
     public function destroy($id)
@@ -55,17 +60,27 @@ class AddToCartController extends Controller
 
     public function update(Request $request)
     {
-        if (Auth::check()) {
-            if (Cart::where('id', $request->id)->exists()) {
-                $cart = Cart::where('id', $request->id)->first();
-                $cart->update([
-                    'qty' => $request->qty,
-                ]);
-            }
+        $request->validate([
+            'id' => 'required|exists:carts,id',
+            'qty' => 'required|integer|min:1',
+        ]);
 
-            return response()->json(['msg' => 'cart updated']);
+        if (Auth::check()) {
+            $cart = Cart::where('id', $request->id)->where('user_id', Auth::id())->first();
+
+            if ($cart) {
+                $product = $cart->Product;
+
+                if ($product->qty < $request->qty) {
+                    return response()->json(['msg' => 'Insufficient stock for this product.']);
+                }
+
+                $cart->update(['qty' => $request->qty]);
+
+                return response()->json(['msg' => 'Cart updated successfully.']);
+            }
         }
 
-        return null;
+        return response()->json(['msg' => 'Unable to update cart.']);
     }
 }

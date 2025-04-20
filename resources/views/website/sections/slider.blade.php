@@ -1,22 +1,28 @@
+@php
+    $sliders = [
+        ['image' => asset('assets/img/slider1.jpg'), 'caption' => 'Welcome to Our Store'],
+        ['image' => asset('assets/img/slider2.jpg'), 'caption' => 'Discover Amazing Products'],
+        ['image' => asset('assets/img/slider3.jpg'), 'caption' => 'Shop the Latest Trends'],
+    ];
+@endphp
+
 <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+        @foreach ($sliders as $index => $slider)
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}"
+                class="{{ $index === 0 ? 'active' : '' }}" aria-current="{{ $index === 0 ? 'true' : 'false' }}"
+                aria-label="Slide {{ $index + 1 }}"></button>
+        @endforeach
     </div>
     <div class="carousel-inner" style="height: 600px">
-        <div class="carousel-item active">
-            <img src="{{asset('assets/img/slider.jpg')}}" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset('assets/img/slider.jpg')}}" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset('assets/img/slider.jpg')}}" class="d-block w-100" alt="...">
-        </div>
+        @foreach ($sliders as $index => $slider)
+            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <img src="{{ $slider['image'] }}" class="d-block w-100" alt="Slide {{ $index + 1 }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{{ $slider['caption'] }}</h5>
+                </div>
+            </div>
+        @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
         data-bs-slide="prev">
@@ -29,3 +35,15 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carouselElement = document.querySelector('#carouselExampleIndicators');
+        if (carouselElement) {
+            const carousel = new bootstrap.Carousel(carouselElement, {
+                interval: 6000, // 1 minute in milliseconds
+                ride: 'carousel'
+            });
+        }
+    });
+</script>

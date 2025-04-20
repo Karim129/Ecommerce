@@ -58,8 +58,10 @@
 
                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                         <h5 class="mb-0">
-                                            @php$product_total =
-                                                    $product_cart->Product->selling_price * $product_cart->qty;
+                                            @php
+                                                $product_total = isset($product_cart->Product)
+                                                    ? $product_cart->Product->selling_price * $product_cart->qty
+                                                    : 0;
                                             @endphp
                                             {{ $product_total }}
                                         </h5>
@@ -134,10 +136,30 @@
 
         }
 
+        function showLoading() {
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'loading-indicator';
+            loadingDiv.style.position = 'fixed';
+            loadingDiv.style.top = '50%';
+            loadingDiv.style.left = '50%';
+            loadingDiv.style.transform = 'translate(-50%, -50%)';
+            loadingDiv.style.zIndex = '9999';
+            loadingDiv.innerHTML =
+                '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
+            document.body.appendChild(loadingDiv);
+        }
 
+        function hideLoading() {
+            const loadingDiv = document.getElementById('loading-indicator');
+            if (loadingDiv) {
+                loadingDiv.remove();
+            }
+        }
 
         function updateCart(id) {
             var qty = $('.qty_' + id).val();
+
+            showLoading();
 
             $.ajax({
                 method: 'POST',
@@ -148,10 +170,18 @@
                     qty: qty
                 },
                 success: function(response) {
-                    console.log(response.msg)
-                    $('#cart_div').load(location.href + " #cart_div");
+                    console.log(response.msg);
+                    $('#cart_div').load(location.href + " #cart_div", function() {
+                        hideLoading();
+                    });
+                    $('#total_price').text(response.total_price);
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                    hideLoading();
+                    alert('An error occurred while updating the cart.');
                 }
-            })
+            });
         }
     </script>
 @endsection

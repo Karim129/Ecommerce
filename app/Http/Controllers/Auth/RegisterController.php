@@ -23,7 +23,6 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-        dd($data);
 
         return Validator::make($data, [
             'fname' => ['required', 'string', 'max:255'],
@@ -35,27 +34,30 @@ class RegisterController extends Controller
             'address1' => ['required', 'max:255'],
             'pincode' => ['required', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'image' => ['nullable', 'required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
     }
 
     protected function create(array $data)
     {
-        dd($data);
+        try {
+            $imagePath = isset($data['image']) ? ImageService::upload($data['image'], 'users') : null;
 
-        return User::create([
-            'fname' => $data['fname'],
-            'lname' => $data['lname'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'country' => $data['country'],
-            'city' => $data['city'],
-            'address1' => $data['address1'],
-            'pincode' => $data['pincode'],
-            'password' => Hash::make($data['password']),
-            'image' => ImageService::upload($data['image'], 'users'),
-
-        ]);
-
+            return User::create([
+                'fname' => $data['fname'],
+                'lname' => $data['lname'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'country' => $data['country'],
+                'city' => $data['city'],
+                'address1' => $data['address1'],
+                'pincode' => $data['pincode'],
+                'password' => Hash::make($data['password']),
+                'image' => $imagePath,
+            ]);
+        } catch (\Exception $e) {
+            report($e);
+            return redirect()->back()->withErrors(['error' => 'Failed to register user. Please try again.']);
+        }
     }
 }

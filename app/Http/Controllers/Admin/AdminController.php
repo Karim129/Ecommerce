@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Models\User;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -13,58 +15,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $data['route'] = 'dashboard';
-        $setting = Setting::first();
-        $settings = json_decode($setting);
+        $totalUsers = User::count();
+        $totalSales = Cart::calculateTotalValue();
+        $pendingOrders = Cart::count();
+        $supportTickets = Setting::first()?->getSupportTicketsCount() ?? 0;
 
-        return view('admin.dashboard', $data, ['settings' => $settings]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): void
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): void
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id): void
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): void
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id): void
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id): void
-    {
-        //
-    }
-}
+        return view('admin.dashboard', [
+            'totalUsers' => $totalUsers,
+            'totalSales' => $totalSales,
+            'pendingOrders' => $pendingOrders,
+            'supportTickets' => $supportTickets,
+            'route' => 'admin_dashboard',
+        ]);
+    }}

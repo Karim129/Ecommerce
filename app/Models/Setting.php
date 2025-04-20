@@ -19,4 +19,9 @@ class Setting extends Model
     {
         return $this->settings;
     }
+
+    public function getSupportTicketsCount()
+    {
+        return isset($this->settings['support_tickets']) ? count($this->settings['support_tickets']) : 0;
+    }
 }

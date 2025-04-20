@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">ElalRaya Shop</a>
+        <a class="navbar-brand" href="{{ url('/') }}">ElalRaya Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,14 +19,15 @@
                     <a class="nav-link {{ $route == 'cart_page' ? 'active' : '' }}"
                         href="{{ route('cart.index') }}">{{ trans('website_navbar.cart') }}</a>
                 </li>
-                <li class="nav-item">
+              @can('dashboard')
+               <li class="nav-item">
                     <a class="nav-link {{ $route == 'dashboard' ? 'active' : '' }}"
                         href="{{ route('dashboard') }}">{{ trans('website_navbar.Dashboard') }}</a>
                 </li>
+                @endcan
 
             </ul>
             <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">

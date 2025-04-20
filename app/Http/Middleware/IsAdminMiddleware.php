@@ -22,18 +22,9 @@ class IsAdminMiddleware
             }
             abort(404);
         } else {
-
-            return redirect()->back()->with('status', 'you should log in');
+            return redirect()->route('login')->with('status', 'you should log in');
         }
     }
 
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     */
-    protected function redirectTo(Request $request): string
-    {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
-    }
+
 }

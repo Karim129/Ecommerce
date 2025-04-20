@@ -15,4 +15,11 @@ class Cart extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public static function calculateTotalValue()
+    {
+        return self::with('Product')->get()->sum(function ($cart) {
+            return $cart->Product->price * $cart->qty;
+        });
+    }
 }
